@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WinInterview — Abriendo app</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #08090c;
+      color: #f5f5f7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      padding: 24px;
+    }
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: #a3e635;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    h1 { font-size: 1.25rem; font-weight: 600; }
+    p { color: #a1a1aa; font-size: 0.95rem; max-width: 320px; line-height: 1.5; }
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(163, 230, 53, 0.2);
+      border-top-color: #a3e635;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .error {
+      color: #f87171;
+      font-size: 0.9rem;
+      max-width: 400px;
+    }
+    .btn {
+      margin-top: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #a3e635;
+      color: #0a0a0a;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="logo">🎯</div>
+  <h1 id="title">Abriendo WinInterview</h1>
+  <p id="message">Esperando autenticación...</p>
+  <div id="spinner" class="spinner"></div>
+  <div id="error" class="error" style="display: none;"></div>
+  <button id="retry" class="btn" style="display: none;">Intentar de nuevo</button>
+
+  <script
+    async
+    crossorigin="anonymous"
+    data-clerk-publishable-key="pk_live_Y2xlcmsud2luaW50ZXJ2aWV3Lnh5eiQ"
+    src="https://clerk.wininterview.xyz/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    type="text/javascript"
+  ></script>
+
+  <script>
+    const BACKEND_URL = "https://backend-production-16c3a.up.railway.app";
+    const titleEl = document.getElementById("title");
+    const messageEl = document.getElementById("message");
+    const spinnerEl = document.getElementById("spinner");
+    const errorEl = document.getElementById("error");
+    const retryEl = document.getElementById("retry");
+
+    function showError(message) {
+      titleEl.textContent = "No se pudo abrir la app";
+      messageEl.style.display = "none";
+      spinnerEl.style.display = "none";
+      errorEl.textContent = message;
+      errorEl.style.display = "block";
+      retryEl.style.display = "inline-block";
+    }
+
+    function redirectToApp(token) {
+      const encodedToken = encodeURIComponent(token);
+      window.location.href = `wininterview://auth?token=${encodedToken}`;
+      // Fallback message in case the deep link doesn't open immediately
+      setTimeout(() => {
+        titleEl.textContent = "App abierta";
+        messageEl.textContent = "Si la app no se abrió automáticamente, cierra esta pestaña e intenta iniciar sesión de nuevo.";
+        spinnerEl.style.display = "none";
+      }, 2500);
+    }
+
+    async function exchangeToken() {
+      try {
+        if (!window.Clerk) {
+          throw new Error("Clerk no se cargó correctamente");
+        }
+
+        await window.Clerk.load();
+
+        if (!window.Clerk.session) {
+          // Not signed in — redirect back to sign in with this page as callback
+          const currentUrl = encodeURIComponent(window.location.href);
+          window.location.href = `https://accounts.wininterview.xyz/sign-in?redirect_url=${currentUrl}`;
+          return;
+        }
+
+        messageEl.textContent = "Verificando sesión...";
+        const clerkToken = await window.Clerk.session.getToken({ template: "convex" });
+        if (!clerkToken) {
+          throw new Error("No se pudo obtener el token de sesión");
+        }
+
+        messageEl.textContent = "Preparando la app de escritorio...";
+        const response = await fetch(`${BACKEND_URL}/api/desktop/create-session`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ clerk_token: clerkToken }),
+        });
+
+        if (!response.ok) {
+          const body = await response.json().catch(() => ({}));
+          throw new Error(body.detail || `Error del servidor: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (!data.token) {
+          throw new Error("El servidor no devolvió un token válido");
+        }
+
+        redirectToApp(data.token);
+      } catch (err) {
+        console.error("[desktop-auth]", err);
+        showError(err.message || "Ocurrió un error inesperado");
+      }
+    }
+
+    retryEl.addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    // Clerk script calls this automatically, but we also poll as a safeguard.
+    window.addEventListener("load", () => {
+      if (window.Clerk) {
+        exchangeToken();
+      } else {
+        const interval = setInterval(() => {
+          if (window.Clerk) {
+            clearInterval(interval);
+            exchangeToken();
+          }
+        }, 100);
+        // Timeout after 10 seconds
+        setTimeout(() => {
+          clearInterval(interval);
+          if (!window.Clerk) {
+            showError("No se pudo cargar el servicio de autenticación. Verifica tu conexión.");
+          }
+        }, 10000);
+      }
+    });
+  </script>
+</body>
+</html>

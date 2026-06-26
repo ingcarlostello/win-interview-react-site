@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Términos de servicio de wininterview. Lee las condiciones de uso de nuestro copiloto de IA para entrevistas." />
+  <meta property="og:title" content="Términos de servicio — wininterview" />
+  <meta property="og:description" content="Condiciones de uso del servicio wininterview." />
+  <title data-i18n="page.title">Términos de servicio — wininterview</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-accent: #a3e635;
+      --color-accent-hover: #b6f03f;
+      --color-accent-press: #84cc16;
+      --color-accent-soft: rgb(163 230 53 / 0.12);
+      --color-accent-soft-2: rgb(163 230 53 / 0.06);
+      --color-accent-glow: rgb(163 230 53 / 0.35);
+      --color-accent-border: rgb(163 230 53 / 0.28);
+      --color-bg-base: #08090c;
+      --color-bg-elev-1: #0d0f14;
+      --color-bg-elev-2: #13161d;
+      --color-bg-elev-3: #1a1e27;
+      --color-bg-inset: rgb(0 0 0 / 0.32);
+      --color-border: rgb(255 255 255 / 0.06);
+      --color-border-strong: rgb(255 255 255 / 0.12);
+      --color-text-primary: #f5f5f7;
+      --color-text-secondary: #a1a1aa;
+      --color-text-muted: #6b6b75;
+      --color-success: #22c55e;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --ease-glass: cubic-bezier(0.32, 0.72, 0, 1);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-xs: 8px;
+      --max-width: 1200px;
+    }
+
+    [data-theme="glass"] {
+      --color-bg-base: rgb(20 22 30 / 0.45);
+      --color-bg-elev-1: rgb(255 255 255 / 0.06);
+      --color-bg-elev-2: rgb(255 255 255 / 0.10);
+      --color-bg-elev-3: rgb(255 255 255 / 0.16);
+      --color-bg-inset: rgb(0 0 0 / 0.20);
+      --color-border: rgb(255 255 255 / 0.12);
+      --color-border-strong: rgb(255 255 255 / 0.22);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: rgb(255 255 255 / 0.85);
+      --color-text-muted: rgb(255 255 255 / 0.55);
+      --color-accent: #b6f03f;
+      --color-accent-hover: #c7f755;
+      --color-accent-press: #a3e635;
+      --color-accent-soft: rgb(182 240 63 / 0.18);
+      --color-accent-soft-2: rgb(182 240 63 / 0.08);
+      --color-accent-glow: rgb(182 240 63 / 0.40);
+      --color-accent-border: rgb(182 240 63 / 0.45);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *::selection { background: var(--color-accent-soft); color: var(--color-accent); }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg-base);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 400ms var(--ease-glass), color 400ms var(--ease-glass);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; margin-top: 28px; margin-bottom: 12px; }
+    p { margin-bottom: 16px; color: var(--color-text-secondary); }
+    ul, ol { margin: 0 0 16px 24px; color: var(--color-text-secondary); }
+    li { margin-bottom: 8px; }
+    strong { color: var(--color-text-primary); }
+    .mono { font-family: var(--font-mono); }
+    .accent { color: var(--color-accent); }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      padding: 6px 14px;
+      border: 1px solid var(--color-accent-border);
+      border-radius: 100px;
+      background: var(--color-accent-soft);
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-xs);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 200ms var(--ease-out);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--color-accent);
+      color: #0a0a0a;
+      box-shadow: 0 0 20px var(--color-accent-glow);
+    }
+    .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--color-bg-elev-2);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-strong);
+    }
+    .btn-secondary:hover { background: var(--color-bg-elev-3); border-color: var(--color-accent-border); }
+
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: all 300ms var(--ease-glass);
+      padding: 16px 0;
+    }
+    .header.scrolled {
+      background: var(--color-bg-base);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--color-border);
+      padding: 10px 0;
+    }
+    [data-theme="glass"] .header.scrolled { background: rgb(20 22 30 / 0.72); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 16px var(--color-accent-glow);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-radius: var(--radius-xs);
+      transition: all 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--color-text-primary); background: var(--color-bg-elev-2); }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .icon-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-elev-1);
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      transition: all 200ms var(--ease-out);
+    }
+    .icon-btn:hover { color: var(--color-text-primary); border-color: var(--color-border-strong); background: var(--color-bg-elev-2); }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xs);
+      overflow: hidden;
+      background: var(--color-bg-elev-1);
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      transition: all 200ms var(--ease-out);
+    }
+    .lang-btn.active { background: var(--color-accent); color: #0a0a0a; }
+
+    .mobile-menu-btn { display: none; }
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--color-bg-elev-1);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-left: 1px solid var(--color-border-strong);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 300ms var(--ease-glass);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu .close-menu {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+    }
+    .mobile-menu a {
+      padding: 14px 16px;
+      border-radius: var(--radius-xs);
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      transition: all 200ms var(--ease-out);
+    }
+    .mobile-menu a:hover { background: var(--color-bg-elev-2); color: var(--color-text-primary); }
+    .menu-overlay {
+      position: fixed; inset: 0;
+      background: rgb(0 0 0 / 0.5);
+      z-index: 150;
+      opacity: 0; pointer-events: none;
+      transition: opacity 300ms;
+    }
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+
+    main { flex: 1; padding-top: 100px; }
+
+    .legal-hero {
+      padding: 80px 0 48px;
+      text-align: center;
+      position: relative;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse at center, var(--color-accent-soft) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .legal-hero > .container { position: relative; z-index: 1; }
+    .legal-updated {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-top: 12px;
+    }
+
+    .legal-content { padding-bottom: 96px; }
+    .legal-container {
+      max-width: 760px;
+      background: var(--color-bg-elev-1);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius);
+      padding: 48px;
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+    .legal-container a { color: var(--color-accent); text-decoration: underline; }
+    .legal-container a:hover { color: var(--color-accent-hover); }
+
+    .footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid var(--color-border);
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .header-actions .btn { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .legal-container { padding: 28px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .legal-container { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🎯</span>
+        <span>wininterview</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#features" data-i18n="nav.features">Funciones</a>
+        <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+        <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="icon-btn" id="themeToggle" title="Toggle theme">◐</button>
+        <a href="/#pricing" class="btn btn-primary" data-i18n="nav.cta">Ver planes</a>
+        <button class="icon-btn mobile-menu-btn" id="menuBtn" title="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">✕</button>
+    <a href="/#features" data-i18n="nav.features">Funciones</a>
+    <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+    <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="/#pricing" class="btn btn-primary" data-i18n="nav.cta" style="margin-top: 12px;">Ver planes</a>
+  </aside>
+
+  <main>
+    <section class="legal-hero">
+      <div class="container">
+        <span class="section-label" data-i18n="page.label">Legal</span>
+        <h1 data-i18n="page.title">Términos de servicio</h1>
+        <p class="legal-updated" data-i18n="page.updated">Última actualización: 25 de junio de 2026</p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="container legal-container">
+        <p data-i18n="intro.0"><strong>Importante:</strong> este documento es un modelo genérico de términos de servicio adaptado a wininterview. No constituye asesoría legal. Te recomendamos revisarlo con un abogado antes de publicarlo.</p>
+
+        <h2 data-i18n="sec1.title">1. Identificación del titular</h2>
+        <p data-i18n="sec1.text">El servicio wininterview (en adelante, "el Servicio") es operado por <strong>Carlos Tello - win interview</strong>, con correo electrónico de contacto <a href="mailto:legal@wininterview.xyz">legal@wininterview.xyz</a>. El presente acuerdo se rige por las leyes de la República de Colombia.</p>
+
+        <h2 data-i18n="sec2.title">2. Aceptación de los términos</h2>
+        <p data-i18n="sec2.text">Al acceder, registrarte o utilizar wininterview, aceptas quedar vinculado por estos Términos de servicio. Si no estás de acuerdo, no debes usar el Servicio. El uso continuado después de cualquier modificación implica la aceptación de los términos actualizados.</p>
+
+        <h2 data-i18n="sec3.title">3. Descripción del servicio</h2>
+        <p data-i18n="sec3.text">wininterview es un copiloto de inteligencia artificial para entrevistas por video. El Servicio incluye, entre otras funciones, transcripción en tiempo real del audio del entrevistador, generación de respuestas sugeridas y análisis de capturas de pantalla proporcionadas voluntariamente por el usuario. El Servicio se proporciona "tal cual" y está destinado a ser una herramienta de apoyo, no un sustituto del juicio profesional del candidato.</p>
+
+        <h2 data-i18n="sec4.title">4. Requisitos de edad y elegibilidad</h2>
+        <p data-i18n="sec4.text">Para usar wininterview debes tener al menos 18 años o la mayoría de edad legal en tu jurisdicción. Al registrarte, declaras que cumples con este requisito y que la información proporcionada es veraz y completa.</p>
+
+        <h2 data-i18n="sec5.title">5. Cuentas y seguridad</h2>
+        <p data-i18n="sec5.text">Puedes acceder al Servicio mediante proveedores de identidad de terceros (Clerk). Eres responsable de mantener la confidencialidad de tus credenciales y de todas las actividades que ocurran bajo tu cuenta. Debes notificarnos de inmediato sobre cualquier uso no autorizado.</p>
+
+        <h2 data-i18n="sec6.title">6. Pagos, suscripciones y renovación</h2>
+        <p data-i18n="sec6.text">Los pagos se procesan a través de Paddle. Al suscribirte a un plan de pago, autorizas a Paddle a cargar el importe correspondiente a tu método de pago de forma recurrente hasta que canceles. Las suscripciones se renuevan automáticamente por períodos mensuales. Puedes cancelar en cualquier momento desde tu cuenta; seguirás teniendo acceso hasta el final del período pagado.</p>
+
+        <h2 data-i18n="sec7.title">7. Uso aceptable</h2>
+        <p data-i18n="sec7.intro">Te comprometes a usar wininterview de manera lícita y respetuosa. Queda prohibido:</p>
+        <ul>
+          <li data-i18n="sec7.1">Utilizar el Servicio para cometer fraude, engaño o cualquier actividad ilícita durante procesos de selección.</li>
+          <li data-i18n="sec7.2">Intentar acceder, modificar, descompilar, realizar ingeniería inversa o interferir con la operación del Servicio.</li>
+          <li data-i18n="sec7.3">Distribuir, revender, alquilar o sublicenciar el acceso al Servicio sin autorización expresa.</li>
+          <li data-i18n="sec7.4">Usar el Servicio para procesar datos de terceros sin el consentimiento adecuado.</li>
+          <li data-i18n="sec7.5">Cargar o transmitir malware, virus o cualquier código dañino.</li>
+        </ul>
+
+        <h2 data-i18n="sec8.title">8. Propiedad intelectual</h2>
+        <p data-i18n="sec8.text">Todos los derechos de propiedad intelectual sobre wininterview, incluidos su código, diseño, marcas y contenido generado por la plataforma, pertenecen a Carlos Tello - win interview o a sus licenciantes. No se te otorga ninguna licencia sobre dichos derechos salvo el derecho limitado a usar el Servicio conforme a estos términos.</p>
+
+        <h2 data-i18n="sec9.title">9. Contenido generado por el usuario</h2>
+        <p data-i18n="sec9.text">Tú conservas los derechos sobre cualquier contenido que introduzcas en el Servicio (como prompts personalizados). Al usar el Servicio, nos otorgas una licencia limitada para procesar dicho contenido exclusivamente con el fin de prestarte el Servicio. No vendemos ni comercializamos tu contenido.</p>
+
+        <h2 data-i18n="sec10.title">10. Limitación de responsabilidad</h2>
+        <p data-i18n="sec10.text">En la máxima medida permitida por la ley aplicable, Carlos Tello - win interview no será responsable por daños indirectos, incidentales, especiales, consecuentes o punitivos, ni por pérdida de beneficios, datos o reputación derivada del uso o la imposibilidad de uso del Servicio. Las respuestas generadas por IA son sugerencias automáticas y no garantizan el éxito en ninguna entrevista o proceso de selección.</p>
+
+        <h2 data-i18n="sec11.title">11. Indemnización</h2>
+        <p data-i18n="sec11.text">Aceptas indemnizar y mantener indemne a Carlos Tello - win interview frente a reclamaciones, daños, responsabilidades y gastos derivados de tu uso del Servicio, de tu violación de estos términos o de la infracción de derechos de terceros.</p>
+
+        <h2 data-i18n="sec12.title">12. Modificación y terminación</h2>
+        <p data-i18n="sec12.text">Podemos suspender o cancelar tu acceso al Servicio en cualquier momento, con o sin previo aviso, si incumples estos términos o si es necesario por seguridad, legalidad o mantenimiento operativo. También podemos modificar el Servicio o estos términos periódicamente; te notificaremos cambios sustanciales con antelación razonable.</p>
+
+        <h2 data-i18n="sec13.title">13. Ley aplicable y jurisdicción</h2>
+        <p data-i18n="sec13.text">Estos Términos se rigen por las leyes de la República de Colombia. Cualquier disputa derivada del uso del Servicio se someterá a los tribunales competentes de Colombia, sin perjuicio de que puedas acudir a los mecanismos de resolución de conflictos disponibles en tu jurisdicción de consumo.</p>
+
+        <h2 data-i18n="sec14.title">14. Contacto</h2>
+        <p data-i18n="sec14.text">Para cualquier consulta sobre estos Términos, puedes escribirnos a <a href="mailto:legal@wininterview.xyz">legal@wininterview.xyz</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <span class="logo-icon">🎯</span>
+        <span>wininterview</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#features" data-i18n="nav.features">Funciones</a>
+        <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+        <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="/terms/" data-i18n="footer.terms">Términos</a>
+        <a href="/privacy/" data-i18n="footer.privacy">Privacidad</a>
+        <a href="/refunds/" data-i18n="footer.refunds">Reembolsos</a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 wininterview. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      es: {
+        'nav.features': 'Funciones',
+        'nav.pricing': 'Precios',
+        'nav.faq': 'FAQ',
+        'nav.cta': 'Ver planes',
+        'footer.terms': 'Términos',
+        'footer.privacy': 'Privacidad',
+        'footer.refunds': 'Reembolsos',
+        'footer.copy': '© 2026 wininterview. Todos los derechos reservados.',
+        'page.label': 'Legal',
+        'page.title': 'Términos de servicio',
+        'page.updated': 'Última actualización: 25 de junio de 2026',
+        'intro.0': 'Importante: este documento es un modelo genérico de términos de servicio adaptado a wininterview. No constituye asesoría legal. Te recomendamos revisarlo con un abogado antes de publicarlo.',
+        'sec1.title': '1. Identificación del titular',
+        'sec1.text': 'El servicio wininterview (en adelante, "el Servicio") es operado por Carlos Tello - win interview, con correo electrónico de contacto legal@wininterview.xyz. El presente acuerdo se rige por las leyes de la República de Colombia.',
+        'sec2.title': '2. Aceptación de los términos',
+        'sec2.text': 'Al acceder, registrarte o utilizar wininterview, aceptas quedar vinculado por estos Términos de servicio. Si no estás de acuerdo, no debes usar el Servicio. El uso continuado después de cualquier modificación implica la aceptación de los términos actualizados.',
+        'sec3.title': '3. Descripción del servicio',
+        'sec3.text': 'wininterview es un copiloto de inteligencia artificial para entrevistas por video. El Servicio incluye, entre otras funciones, transcripción en tiempo real del audio del entrevistador, generación de respuestas sugeridas y análisis de capturas de pantalla proporcionadas voluntariamente por el usuario. El Servicio se proporciona "tal cual" y está destinado a ser una herramienta de apoyo, no un sustituto del juicio profesional del candidato.',
+        'sec4.title': '4. Requisitos de edad y elegibilidad',
+        'sec4.text': 'Para usar wininterview debes tener al menos 18 años o la mayoría de edad legal en tu jurisdicción. Al registrarte, declaras que cumples con este requisito y que la información proporcionada es veraz y completa.',
+        'sec5.title': '5. Cuentas y seguridad',
+        'sec5.text': 'Puedes acceder al Servicio mediante proveedores de identidad de terceros (Clerk). Eres responsable de mantener la confidencialidad de tus credenciales y de todas las actividades que ocurran bajo tu cuenta. Debes notificarnos de inmediato sobre cualquier uso no autorizado.',
+        'sec6.title': '6. Pagos, suscripciones y renovación',
+        'sec6.text': 'Los pagos se procesan a través de Paddle. Al suscribirte a un plan de pago, autorizas a Paddle a cargar el importe correspondiente a tu método de pago de forma recurrente hasta que canceles. Las suscripciones se renuevan automáticamente por períodos mensuales. Puedes cancelar en cualquier momento desde tu cuenta; seguirás teniendo acceso hasta el final del período pagado.',
+        'sec7.title': '7. Uso aceptable',
+        'sec7.intro': 'Te comprometes a usar wininterview de manera lícita y respetuosa. Queda prohibido:',
+        'sec7.1': 'Utilizar el Servicio para cometer fraude, engaño o cualquier actividad ilícita durante procesos de selección.',
+        'sec7.2': 'Intentar acceder, modificar, descompilar, realizar ingeniería inversa o interferir con la operación del Servicio.',
+        'sec7.3': 'Distribuir, revender, alquilar o sublicenciar el acceso al Servicio sin autorización expresa.',
+        'sec7.4': 'Usar el Servicio para procesar datos de terceros sin el consentimiento adecuado.',
+        'sec7.5': 'Cargar o transmitir malware, virus o cualquier código dañino.',
+        'sec8.title': '8. Propiedad intelectual',
+        'sec8.text': 'Todos los derechos de propiedad intelectual sobre wininterview, incluidos su código, diseño, marcas y contenido generado por la plataforma, pertenecen a Carlos Tello - win interview o a sus licenciantes. No se te otorga ninguna licencia sobre dichos derechos salvo el derecho limitado a usar el Servicio conforme a estos términos.',
+        'sec9.title': '9. Contenido generado por el usuario',
+        'sec9.text': 'Tú conservas los derechos sobre cualquier contenido que introduzcas en el Servicio (como prompts personalizados). Al usar el Servicio, nos otorgas una licencia limitada para procesar dicho contenido exclusivamente con el fin de prestarte el Servicio. No vendemos ni comercializamos tu contenido.',
+        'sec10.title': '10. Limitación de responsabilidad',
+        'sec10.text': 'En la máxima medida permitida por la ley aplicable, Carlos Tello - win interview no será responsable por daños indirectos, incidentales, especiales, consecuentes o punitivos, ni por pérdida de beneficios, datos o reputación derivada del uso o la imposibilidad de uso del Servicio. Las respuestas generadas por IA son sugerencias automáticas y no garantizan el éxito en ninguna entrevista o proceso de selección.',
+        'sec11.title': '11. Indemnización',
+        'sec11.text': 'Aceptas indemnizar y mantener indemne a Carlos Tello - win interview frente a reclamaciones, daños, responsabilidades y gastos derivados de tu uso del Servicio, de tu violación de estos términos o de la infracción de derechos de terceros.',
+        'sec12.title': '12. Modificación y terminación',
+        'sec12.text': 'Podemos suspender o cancelar tu acceso al Servicio en cualquier momento, con o sin previo aviso, si incumples estos términos o si es necesario por seguridad, legalidad o mantenimiento operativo. También podemos modificar el Servicio o estos términos periódicamente; te notificaremos cambios sustanciales con antelación razonable.',
+        'sec13.title': '13. Ley aplicable y jurisdicción',
+        'sec13.text': 'Estos Términos se rigen por las leyes de la República de Colombia. Cualquier disputa derivada del uso del Servicio se someterá a los tribunales competentes de Colombia, sin perjuicio de que puedas acudir a los mecanismos de resolución de conflictos disponibles en tu jurisdicción de consumo.',
+        'sec14.title': '14. Contacto',
+        'sec14.text': 'Para cualquier consulta sobre estos Términos, puedes escribirnos a legal@wininterview.xyz.'
+      },
+      en: {
+        'nav.features': 'Features',
+        'nav.pricing': 'Pricing',
+        'nav.faq': 'FAQ',
+        'nav.cta': 'See plans',
+        'footer.terms': 'Terms',
+        'footer.privacy': 'Privacy',
+        'footer.refunds': 'Refunds',
+        'footer.copy': '© 2026 wininterview. All rights reserved.',
+        'page.label': 'Legal',
+        'page.title': 'Terms of service',
+        'page.updated': 'Last updated: June 25, 2026',
+        'intro.0': 'Important: this document is a generic terms of service template adapted for wininterview. It does not constitute legal advice. We recommend having it reviewed by an attorney before publishing.',
+        'sec1.title': '1. Identification of the operator',
+        'sec1.text': 'The wininterview service (the "Service") is operated by Carlos Tello - win interview, with contact email legal@wininterview.xyz. This agreement is governed by the laws of the Republic of Colombia.',
+        'sec2.title': '2. Acceptance of terms',
+        'sec2.text': 'By accessing, registering for, or using wininterview, you agree to be bound by these Terms of Service. If you do not agree, you must not use the Service. Continued use after any changes constitutes acceptance of the updated terms.',
+        'sec3.title': '3. Description of the service',
+        'sec3.text': 'wininterview is an AI copilot for video interviews. The Service includes, among other features, real-time transcription of the interviewer\'s audio, suggested answer generation, and analysis of screenshots voluntarily provided by the user. The Service is provided "as is" and is intended as a support tool, not a substitute for the candidate\'s professional judgment.',
+        'sec4.title': '4. Age and eligibility requirements',
+        'sec4.text': 'To use wininterview you must be at least 18 years old or the age of legal majority in your jurisdiction. By registering, you represent that you meet this requirement and that the information provided is true and complete.',
+        'sec5.title': '5. Accounts and security',
+        'sec5.text': 'You may access the Service through third-party identity providers (Clerk). You are responsible for maintaining the confidentiality of your credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use.',
+        'sec6.title': '6. Payments, subscriptions, and renewal',
+        'sec6.text': 'Payments are processed through Paddle. By subscribing to a paid plan, you authorize Paddle to charge the applicable amount to your payment method on a recurring basis until you cancel. Subscriptions renew automatically on a monthly basis. You may cancel at any time from your account; access will continue until the end of the paid period.',
+        'sec7.title': '7. Acceptable use',
+        'sec7.intro': 'You agree to use wininterview lawfully and respectfully. The following is prohibited:',
+        'sec7.1': 'Using the Service to commit fraud, deception, or any illegal activity during recruitment processes.',
+        'sec7.2': 'Attempting to access, modify, decompile, reverse engineer, or interfere with the operation of the Service.',
+        'sec7.3': 'Distributing, reselling, renting, or sublicensing access to the Service without express authorization.',
+        'sec7.4': 'Using the Service to process third-party data without appropriate consent.',
+        'sec7.5': 'Uploading or transmitting malware, viruses, or any harmful code.',
+        'sec8.title': '8. Intellectual property',
+        'sec8.text': 'All intellectual property rights in wininterview, including its code, design, trademarks, and platform-generated content, belong to Carlos Tello - win interview or its licensors. You are granted no rights in or to such intellectual property except the limited right to use the Service in accordance with these terms.',
+        'sec9.title': '9. User-generated content',
+        'sec9.text': 'You retain ownership of any content you input into the Service (such as custom prompts). By using the Service, you grant us a limited license to process such content solely for the purpose of providing the Service to you. We do not sell or commercialize your content.',
+        'sec10.title': '10. Limitation of liability',
+        'sec10.text': 'To the maximum extent permitted by applicable law, Carlos Tello - win interview shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of profits, data, or reputation arising from the use or inability to use the Service. AI-generated responses are automatic suggestions and do not guarantee success in any interview or recruitment process.',
+        'sec11.title': '11. Indemnification',
+        'sec11.text': 'You agree to indemnify and hold harmless Carlos Tello - win interview from any claims, damages, liabilities, and expenses arising from your use of the Service, your violation of these terms, or your infringement of third-party rights.',
+        'sec12.title': '12. Modification and termination',
+        'sec12.text': 'We may suspend or terminate your access to the Service at any time, with or without notice, if you violate these terms or if required for security, legal, or operational maintenance reasons. We may also modify the Service or these terms from time to time; we will notify you of material changes with reasonable advance notice.',
+        'sec13.title': '13. Governing law and jurisdiction',
+        'sec13.text': 'These Terms are governed by the laws of the Republic of Colombia. Any dispute arising from the use of the Service shall be submitted to the competent courts of Colombia, without prejudice to your right to use any consumer dispute resolution mechanisms available in your jurisdiction.',
+        'sec14.title': '14. Contact',
+        'sec14.text': 'For any questions about these Terms, please contact us at legal@wininterview.xyz.'
+      }
+    };
+
+    let currentLang = localStorage.getItem('ic-lang') || 'es';
+    let currentTheme = localStorage.getItem('ic-theme') || 'dark';
+
+    function t(key) {
+      return (i18n[currentLang] && i18n[currentLang][key]) || key;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('ic-lang', lang);
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (i18n[currentLang][key]) el.innerHTML = i18n[currentLang][key];
+      });
+    }
+
+    function setTheme(theme) {
+      currentTheme = theme;
+      localStorage.setItem('ic-theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+      const btn = document.getElementById('themeToggle');
+      btn.textContent = theme === 'glass' ? '◑' : '◐';
+      btn.title = theme === 'glass' ? 'Switch to dark' : 'Switch to glass';
+    }
+
+    function handleScroll() {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeMenu');
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('menuOverlay');
+
+      function toggle() {
+        const open = menu.classList.toggle('open');
+        overlay.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      menuBtn.addEventListener('click', toggle);
+      closeBtn.addEventListener('click', toggle);
+      overlay.addEventListener('click', toggle);
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggle));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTheme(currentTheme);
+      setLanguage(currentLang);
+      initMobileMenu();
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      });
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        setTheme(currentTheme === 'dark' ? 'glass' : 'dark');
+      });
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    });
+  </script>
+</body>
+</html>

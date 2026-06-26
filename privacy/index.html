@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Política de privacidad de wininterview. Conoce cómo procesamos tus datos, audio y pantalla durante las entrevistas." />
+  <meta property="og:title" content="Política de privacidad — wininterview" />
+  <meta property="og:description" content="Política de privacidad de wininterview." />
+  <title data-i18n="page.title">Política de privacidad — wininterview</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-accent: #a3e635;
+      --color-accent-hover: #b6f03f;
+      --color-accent-press: #84cc16;
+      --color-accent-soft: rgb(163 230 53 / 0.12);
+      --color-accent-soft-2: rgb(163 230 53 / 0.06);
+      --color-accent-glow: rgb(163 230 53 / 0.35);
+      --color-accent-border: rgb(163 230 53 / 0.28);
+      --color-bg-base: #08090c;
+      --color-bg-elev-1: #0d0f14;
+      --color-bg-elev-2: #13161d;
+      --color-bg-elev-3: #1a1e27;
+      --color-bg-inset: rgb(0 0 0 / 0.32);
+      --color-border: rgb(255 255 255 / 0.06);
+      --color-border-strong: rgb(255 255 255 / 0.12);
+      --color-text-primary: #f5f5f7;
+      --color-text-secondary: #a1a1aa;
+      --color-text-muted: #6b6b75;
+      --color-success: #22c55e;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --ease-glass: cubic-bezier(0.32, 0.72, 0, 1);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-xs: 8px;
+      --max-width: 1200px;
+    }
+
+    [data-theme="glass"] {
+      --color-bg-base: rgb(20 22 30 / 0.45);
+      --color-bg-elev-1: rgb(255 255 255 / 0.06);
+      --color-bg-elev-2: rgb(255 255 255 / 0.10);
+      --color-bg-elev-3: rgb(255 255 255 / 0.16);
+      --color-bg-inset: rgb(0 0 0 / 0.20);
+      --color-border: rgb(255 255 255 / 0.12);
+      --color-border-strong: rgb(255 255 255 / 0.22);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: rgb(255 255 255 / 0.85);
+      --color-text-muted: rgb(255 255 255 / 0.55);
+      --color-accent: #b6f03f;
+      --color-accent-hover: #c7f755;
+      --color-accent-press: #a3e635;
+      --color-accent-soft: rgb(182 240 63 / 0.18);
+      --color-accent-soft-2: rgb(182 240 63 / 0.08);
+      --color-accent-glow: rgb(182 240 63 / 0.40);
+      --color-accent-border: rgb(182 240 63 / 0.45);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *::selection { background: var(--color-accent-soft); color: var(--color-accent); }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg-base);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 400ms var(--ease-glass), color 400ms var(--ease-glass);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-top: 40px; margin-bottom: 16px; }
+    h3 { font-size: 1.15rem; margin-top: 28px; margin-bottom: 12px; }
+    p { margin-bottom: 16px; color: var(--color-text-secondary); }
+    ul, ol { margin: 0 0 16px 24px; color: var(--color-text-secondary); }
+    li { margin-bottom: 8px; }
+    strong { color: var(--color-text-primary); }
+    .mono { font-family: var(--font-mono); }
+    .accent { color: var(--color-accent); }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      padding: 6px 14px;
+      border: 1px solid var(--color-accent-border);
+      border-radius: 100px;
+      background: var(--color-accent-soft);
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-xs);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 200ms var(--ease-out);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--color-accent);
+      color: #0a0a0a;
+      box-shadow: 0 0 20px var(--color-accent-glow);
+    }
+    .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--color-bg-elev-2);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-strong);
+    }
+    .btn-secondary:hover { background: var(--color-bg-elev-3); border-color: var(--color-accent-border); }
+
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: all 300ms var(--ease-glass);
+      padding: 16px 0;
+    }
+    .header.scrolled {
+      background: var(--color-bg-base);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--color-border);
+      padding: 10px 0;
+    }
+    [data-theme="glass"] .header.scrolled { background: rgb(20 22 30 / 0.72); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 16px var(--color-accent-glow);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-radius: var(--radius-xs);
+      transition: all 200ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--color-text-primary); background: var(--color-bg-elev-2); }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .icon-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-elev-1);
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      transition: all 200ms var(--ease-out);
+    }
+    .icon-btn:hover { color: var(--color-text-primary); border-color: var(--color-border-strong); background: var(--color-bg-elev-2); }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xs);
+      overflow: hidden;
+      background: var(--color-bg-elev-1);
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      transition: all 200ms var(--ease-out);
+    }
+    .lang-btn.active { background: var(--color-accent); color: #0a0a0a; }
+
+    .mobile-menu-btn { display: none; }
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--color-bg-elev-1);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-left: 1px solid var(--color-border-strong);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 300ms var(--ease-glass);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu .close-menu {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+    }
+    .mobile-menu a {
+      padding: 14px 16px;
+      border-radius: var(--radius-xs);
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      transition: all 200ms var(--ease-out);
+    }
+    .mobile-menu a:hover { background: var(--color-bg-elev-2); color: var(--color-text-primary); }
+    .menu-overlay {
+      position: fixed; inset: 0;
+      background: rgb(0 0 0 / 0.5);
+      z-index: 150;
+      opacity: 0; pointer-events: none;
+      transition: opacity 300ms;
+    }
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+
+    main { flex: 1; padding-top: 100px; }
+
+    .legal-hero {
+      padding: 80px 0 48px;
+      text-align: center;
+      position: relative;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse at center, var(--color-accent-soft) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .legal-hero > .container { position: relative; z-index: 1; }
+    .legal-updated {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-top: 12px;
+    }
+
+    .legal-content { padding-bottom: 96px; }
+    .legal-container {
+      max-width: 760px;
+      background: var(--color-bg-elev-1);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius);
+      padding: 48px;
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+    .legal-container a { color: var(--color-accent); text-decoration: underline; }
+    .legal-container a:hover { color: var(--color-accent-hover); }
+
+    .footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid var(--color-border);
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .header-actions .btn { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .legal-container { padding: 28px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .legal-container { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🎯</span>
+        <span>wininterview</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#features" data-i18n="nav.features">Funciones</a>
+        <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+        <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="icon-btn" id="themeToggle" title="Toggle theme">◐</button>
+        <a href="/#pricing" class="btn btn-primary" data-i18n="nav.cta">Ver planes</a>
+        <button class="icon-btn mobile-menu-btn" id="menuBtn" title="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">✕</button>
+    <a href="/#features" data-i18n="nav.features">Funciones</a>
+    <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+    <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="/#pricing" class="btn btn-primary" data-i18n="nav.cta" style="margin-top: 12px;">Ver planes</a>
+  </aside>
+
+  <main>
+    <section class="legal-hero">
+      <div class="container">
+        <span class="section-label" data-i18n="page.label">Legal</span>
+        <h1 data-i18n="page.title">Política de privacidad</h1>
+        <p class="legal-updated" data-i18n="page.updated">Última actualización: 25 de junio de 2026</p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="container legal-container">
+        <p data-i18n="intro.0"><strong>Importante:</strong> este documento es un modelo genérico de política de privacidad adaptado a wininterview. No constituye asesoría legal. Te recomendamos revisarlo con un abogado antes de publicarlo.</p>
+
+        <h2 data-i18n="sec1.title">1. Responsable del tratamiento</h2>
+        <p data-i18n="sec1.text">El responsable del tratamiento de tus datos personales es <strong>Carlos Tello - win interview</strong>, ubicado en Colombia. Para cualquier consulta sobre privacidad puedes escribirnos a <a href="mailto:legal@wininterview.xyz">legal@wininterview.xyz</a>.</p>
+
+        <h2 data-i18n="sec2.title">2. Datos que recopilamos</h2>
+        <p data-i18n="sec2.intro">Para prestarte el Servicio podemos tratar los siguientes datos:</p>
+        <ul>
+          <li data-i18n="sec2.1"><strong>Datos de cuenta:</strong> nombre, dirección de correo electrónico e identificador de usuario proporcionados por Clerk durante el registro.</li>
+          <li data-i18n="sec2.2"><strong>Datos de uso:</strong> información sobre cómo interactúas con la aplicación, incluyendo plan contratado, cuotas consumidas y preferencias de idioma o tema.</li>
+          <li data-i18n="sec2.3"><strong>Audio en tiempo real:</strong> el audio capturado por tu micrófono se transmite de forma cifrada a nuestros proveedores de transcripción (Deepgram) para generar la transcripción. No almacenamos grabaciones de audio.</li>
+          <li data-i18n="sec2.4"><strong>Capturas de pantalla:</strong> cuando activas el análisis de pantalla, la imagen se envía de forma cifrada a nuestro proveedor de visión por computadora (MiniMax). No conservamos las capturas después del análisis.</li>
+          <li data-i18n="sec2.5"><strong>Prompts personalizados:</strong> las instrucciones que configures para personalizar las respuestas de la IA se almacenan en tu cuenta para uso futuro.</li>
+        </ul>
+
+        <h2 data-i18n="sec3.title">3. Finalidad del tratamiento</h2>
+        <p data-i18n="sec3.text">Tratamos tus datos únicamente para: (a) prestarte el Servicio de copiloto de IA; (b) gestionar tu cuenta, suscripción y pagos; (c) mejorar la calidad y seguridad del Servicio; y (d) cumplir con obligciones legales. No utilizamos tus entrevistas ni su contenido para entrenar modelos de IA propios ni de terceros.</p>
+
+        <h2 data-i18n="sec4.title">4. Base legal</h2>
+        <p data-i18n="sec4.text">La base legal para el tratamiento de tus datos es la ejecución del contrato de prestación del Servicio (términos aceptados al registrarte) y, en su caso, tu consentimiento expreso para el procesamiento de audio y pantalla, que puedes revocar en cualquier momento cerrando la app o desactivando los permisos correspondientes.</p>
+
+        <h2 data-i18n="sec5.title">5. Proveedores y transferencias internacionales</h2>
+        <p data-i18n="sec5.intro">Para operar wininterview trabajamos con proveedores externos que pueden ubicarse fuera de Colombia:</p>
+        <ul>
+          <li data-i18n="sec5.1"><strong>Clerk</strong>: autenticación y gestión de cuentas.</li>
+          <li data-i18n="sec5.2"><strong>Convex</strong>: almacenamiento de datos de usuario, cuotas y prompts.</li>
+          <li data-i18n="sec5.3"><strong>Paddle</strong>: procesamiento de pagos y suscripciones.</li>
+          <li data-i18n="sec5.4"><strong>Deepgram</strong>: transcripción de audio en tiempo real.</li>
+          <li data-i18n="sec5.5"><strong>MiniMax</strong>: análisis de capturas de pantalla.</li>
+          <li data-i18n="sec5.6"><strong>DeepSeek / NVIDIA</strong>: generación de respuestas de IA.</li>
+        </ul>
+        <p data-i18n="sec5.text">Estos proveedores actúan como encargados del tratamiento y solo acceden a los datos necesarios para prestar su servicio. Garantizamos que las transferencias se realizan con salvaguardas contractuales y técnicas adecuadas.</p>
+
+        <h2 data-i18n="sec6.title">6. Seguridad</h2>
+        <p data-i18n="sec6.text">Aplicamos medidas técnicas y organizativas para proteger tus datos, incluyendo conexiones cifradas (TLS), autenticación mediante tokens JWT, aislamiento por usuario y acceso restringido a la infraestructura. A pesar de nuestros esfuerzos, ningún sistema es completamente invulnerable; te recomendamos mantener tu contraseña y dispositivos seguros.</p>
+
+        <h2 data-i18n="sec7.title">7. Conservación de datos</h2>
+        <p data-i18n="sec7.text">Conservamos tus datos personales mientras mantengas una cuenta activa. El audio y las capturas de pantalla se procesan en tiempo real y no se almacenan permanentemente. Los datos de facturación se conservan durante el tiempo exigido por la normativa fiscal y comercial aplicable. Si cancelas tu cuenta, eliminaremos tus datos personales en un plazo razonable, salvo obligaciones legales de conservación.</p>
+
+        <h2 data-i18n="sec8.title">8. Tus derechos</h2>
+        <p data-i18n="sec8.intro">Como titular de los datos tienes derecho a:</p>
+        <ul>
+          <li data-i18n="sec8.1">Acceder a tus datos personales.</li>
+          <li data-i18n="sec8.2">Rectificar datos inexactos o incompletos.</li>
+          <li data-i18n="sec8.3">Solicitar la supresión de tus datos.</li>
+          <li data-i18n="sec8.4">Oponerte al tratamiento o solicitar su limitación.</li>
+          <li data-i18n="sec8.5">Revocar tu consentimiento en cualquier momento.</li>
+          <li data-i18n="sec8.6">Presentar una reclamación ante la autoridad de protección de datos competente.</li>
+        </ul>
+        <p data-i18n="sec8.text">Para ejercer estos derechos, envía tu solicitud a <a href="mailto:legal@wininterview.xyz">legal@wininterview.xyz</a> indicando claramente tu petición y acreditando tu identidad.</p>
+
+        <h2 data-i18n="sec9.title">9. Cookies y tecnologías similares</h2>
+        <p data-i18n="sec9.text">Actualmente wininterview no utiliza cookies propias de seguimiento. Es posible que los proveedores de autenticación o pago empleen cookies técnicas necesarias para su funcionamiento. Si en el futuro implementamos cookies analíticas o de marketing, actualizaremos esta política y solicitaremos tu consentimiento cuando corresponda.</p>
+
+        <h2 data-i18n="sec10.title">10. Cambios en la política</h2>
+        <p data-i18n="sec10.text">Podemos actualizar esta Política de privacidad para reflejar cambios en el Servicio o en la normativa. Publicaremos la versión actualizada con su fecha de entrada en vigor. Te recomendamos revisarla periódicamente.</p>
+
+        <h2 data-i18n="sec11.title">11. Contacto</h2>
+        <p data-i18n="sec11.text">Si tienes preguntas sobre esta Política de privacidad o sobre el tratamiento de tus datos, escríbenos a <a href="mailto:legal@wininterview.xyz">legal@wininterview.xyz</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <span class="logo-icon">🎯</span>
+        <span>wininterview</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#features" data-i18n="nav.features">Funciones</a>
+        <a href="/#pricing" data-i18n="nav.pricing">Precios</a>
+        <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="/terms/" data-i18n="footer.terms">Términos</a>
+        <a href="/privacy/" data-i18n="footer.privacy">Privacidad</a>
+        <a href="/refunds/" data-i18n="footer.refunds">Reembolsos</a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 wininterview. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      es: {
+        'nav.features': 'Funciones',
+        'nav.pricing': 'Precios',
+        'nav.faq': 'FAQ',
+        'nav.cta': 'Ver planes',
+        'footer.terms': 'Términos',
+        'footer.privacy': 'Privacidad',
+        'footer.refunds': 'Reembolsos',
+        'footer.copy': '© 2026 wininterview. Todos los derechos reservados.',
+        'page.label': 'Legal',
+        'page.title': 'Política de privacidad',
+        'page.updated': 'Última actualización: 25 de junio de 2026',
+        'intro.0': 'Importante: este documento es un modelo genérico de política de privacidad adaptado a wininterview. No constituye asesoría legal. Te recomendamos revisarlo con un abogado antes de publicarlo.',
+        'sec1.title': '1. Responsable del tratamiento',
+        'sec1.text': 'El responsable del tratamiento de tus datos personales es Carlos Tello - win interview, ubicado en Colombia. Para cualquier consulta sobre privacidad puedes escribirnos a legal@wininterview.xyz.',
+        'sec2.title': '2. Datos que recopilamos',
+        'sec2.intro': 'Para prestarte el Servicio podemos tratar los siguientes datos:',
+        'sec2.1': 'Datos de cuenta: nombre, dirección de correo electrónico e identificador de usuario proporcionados por Clerk durante el registro.',
+        'sec2.2': 'Datos de uso: información sobre cómo interactúas con la aplicación, incluyendo plan contratado, cuotas consumidas y preferencias de idioma o tema.',
+        'sec2.3': 'Audio en tiempo real: el audio capturado por tu micrófono se transmite de forma cifrada a nuestros proveedores de transcripción (Deepgram) para generar la transcripción. No almacenamos grabaciones de audio.',
+        'sec2.4': 'Capturas de pantalla: cuando activas el análisis de pantalla, la imagen se envía de forma cifrada a nuestro proveedor de visión por computadora (MiniMax). No conservamos las capturas después del análisis.',
+        'sec2.5': 'Prompts personalizados: las instrucciones que configures para personalizar las respuestas de la IA se almacenan en tu cuenta para uso futuro.',
+        'sec3.title': '3. Finalidad del tratamiento',
+        'sec3.text': 'Tratamos tus datos únicamente para: (a) prestarte el Servicio de copiloto de IA; (b) gestionar tu cuenta, suscripción y pagos; (c) mejorar la calidad y seguridad del Servicio; y (d) cumplir con obligaciones legales. No utilizamos tus entrevistas ni su contenido para entrenar modelos de IA propios ni de terceros.',
+        'sec4.title': '4. Base legal',
+        'sec4.text': 'La base legal para el tratamiento de tus datos es la ejecución del contrato de prestación del Servicio (términos aceptados al registrarte) y, en su caso, tu consentimiento expreso para el procesamiento de audio y pantalla, que puedes revocar en cualquier momento cerrando la app o desactivando los permisos correspondientes.',
+        'sec5.title': '5. Proveedores y transferencias internacionales',
+        'sec5.intro': 'Para operar wininterview trabajamos con proveedores externos que pueden ubicarse fuera de Colombia:',
+        'sec5.1': 'Clerk: autenticación y gestión de cuentas.',
+        'sec5.2': 'Convex: almacenamiento de datos de usuario, cuotas y prompts.',
+        'sec5.3': 'Paddle: procesamiento de pagos y suscripciones.',
+        'sec5.4': 'Deepgram: transcripción de audio en tiempo real.',
+        'sec5.5': 'MiniMax: análisis de capturas de pantalla.',
+        'sec5.6': 'DeepSeek / NVIDIA: generación de respuestas de IA.',
+        'sec5.text': 'Estos proveedores actúan como encargados del tratamiento y solo acceden a los datos necesarios para prestar su servicio. Garantizamos que las transferencias se realizan con salvaguardas contractuales y técnicas adecuadas.',
+        'sec6.title': '6. Seguridad',
+        'sec6.text': 'Aplicamos medidas técnicas y organizativas para proteger tus datos, incluyendo conexiones cifradas (TLS), autenticación mediante tokens JWT, aislamiento por usuario y acceso restringido a la infraestructura. A pesar de nuestros esfuerzos, ningún sistema es completamente invulnerable; te recomendamos mantener tu contraseña y dispositivos seguros.',
+        'sec7.title': '7. Conservación de datos',
+        'sec7.text': 'Conservamos tus datos personales mientras mantengas una cuenta activa. El audio y las capturas de pantalla se procesan en tiempo real y no se almacenan permanentemente. Los datos de facturación se conservan durante el tiempo exigido por la normativa fiscal y comercial aplicable. Si cancelas tu cuenta, eliminaremos tus datos personales en un plazo razonable, salvo obligaciones legales de conservación.',
+        'sec8.title': '8. Tus derechos',
+        'sec8.intro': 'Como titular de los datos tienes derecho a:',
+        'sec8.1': 'Acceder a tus datos personales.',
+        'sec8.2': 'Rectificar datos inexactos o incompletos.',
+        'sec8.3': 'Solicitar la supresión de tus datos.',
+        'sec8.4': 'Oponerte al tratamiento o solicitar su limitación.',
+        'sec8.5': 'Revocar tu consentimiento en cualquier momento.',
+        'sec8.6': 'Presentar una reclamación ante la autoridad de protección de datos competente.',
+        'sec8.text': 'Para ejercer estos derechos, envía tu solicitud a legal@wininterview.xyz indicando claramente tu petición y acreditando tu identidad.',
+        'sec9.title': '9. Cookies y tecnologías similares',
+        'sec9.text': 'Actualmente wininterview no utiliza cookies propias de seguimiento. Es posible que los proveedores de autenticación o pago empleen cookies técnicas necesarias para su funcionamiento. Si en el futuro implementamos cookies analíticas o de marketing, actualizaremos esta política y solicitaremos tu consentimiento cuando corresponda.',
+        'sec10.title': '10. Cambios en la política',
+        'sec10.text': 'Podemos actualizar esta Política de privacidad para reflejar cambios en el Servicio o en la normativa. Publicaremos la versión actualizada con su fecha de entrada en vigor. Te recomendamos revisarla periódicamente.',
+        'sec11.title': '11. Contacto',
+        'sec11.text': 'Si tienes preguntas sobre esta Política de privacidad o sobre el tratamiento de tus datos, escríbenos a legal@wininterview.xyz.'
+      },
+      en: {
+        'nav.features': 'Features',
+        'nav.pricing': 'Pricing',
+        'nav.faq': 'FAQ',
+        'nav.cta': 'See plans',
+        'footer.terms': 'Terms',
+        'footer.privacy': 'Privacy',
+        'footer.refunds': 'Refunds',
+        'footer.copy': '© 2026 wininterview. All rights reserved.',
+        'page.label': 'Legal',
+        'page.title': 'Privacy policy',
+        'page.updated': 'Last updated: June 25, 2026',
+        'intro.0': 'Important: this document is a generic privacy policy template adapted for wininterview. It does not constitute legal advice. We recommend having it reviewed by an attorney before publishing.',
+        'sec1.title': '1. Data controller',
+        'sec1.text': 'The data controller for your personal data is Carlos Tello - win interview, located in Colombia. For any privacy inquiries you can write to us at legal@wininterview.xyz.',
+        'sec2.title': '2. Data we collect',
+        'sec2.intro': 'To provide you with the Service we may process the following data:',
+        'sec2.1': 'Account data: name, email address, and user identifier provided by Clerk during registration.',
+        'sec2.2': 'Usage data: information about how you interact with the app, including your subscribed plan, quotas consumed, and language or theme preferences.',
+        'sec2.3': 'Real-time audio: audio captured by your microphone is transmitted encrypted to our transcription providers (Deepgram) to generate the transcript. We do not store audio recordings.',
+        'sec2.4': 'Screenshots: when you enable screen analysis, the image is sent encrypted to our computer vision provider (MiniMax). We do not keep screenshots after analysis.',
+        'sec2.5': 'Custom prompts: instructions you configure to customize AI responses are stored in your account for future use.',
+        'sec3.title': '3. Purpose of processing',
+        'sec3.text': 'We process your data solely to: (a) provide the AI copilot Service; (b) manage your account, subscription, and payments; (c) improve the quality and security of the Service; and (d) comply with legal obligations. We do not use your interviews or their content to train our own or third-party AI models.',
+        'sec4.title': '4. Legal basis',
+        'sec4.text': 'The legal basis for processing your data is the performance of the Service contract (terms accepted upon registration) and, where applicable, your express consent for audio and screen processing, which you can revoke at any time by closing the app or disabling the corresponding permissions.',
+        'sec5.title': '5. Providers and international transfers',
+        'sec5.intro': 'To operate wininterview we work with external providers that may be located outside Colombia:',
+        'sec5.1': 'Clerk: authentication and account management.',
+        'sec5.2': 'Convex: storage of user data, quotas, and prompts.',
+        'sec5.3': 'Paddle: payment and subscription processing.',
+        'sec5.4': 'Deepgram: real-time audio transcription.',
+        'sec5.5': 'MiniMax: screenshot analysis.',
+        'sec5.6': 'DeepSeek / NVIDIA: AI answer generation.',
+        'sec5.text': 'These providers act as data processors and only access the data necessary to provide their service. We ensure that transfers are made with appropriate contractual and technical safeguards.',
+        'sec6.title': '6. Security',
+        'sec6.text': 'We apply technical and organizational measures to protect your data, including encrypted connections (TLS), JWT token authentication, per-user isolation, and restricted access to infrastructure. Despite our efforts, no system is completely invulnerable; we recommend keeping your password and devices secure.',
+        'sec7.title': '7. Data retention',
+        'sec7.text': 'We keep your personal data while you maintain an active account. Audio and screenshots are processed in real time and are not permanently stored. Billing data is retained for the period required by applicable tax and commercial law. If you cancel your account, we will delete your personal data within a reasonable time, except where legal retention obligations apply.',
+        'sec8.title': '8. Your rights',
+        'sec8.intro': 'As a data subject you have the right to:',
+        'sec8.1': 'Access your personal data.',
+        'sec8.2': 'Rectify inaccurate or incomplete data.',
+        'sec8.3': 'Request deletion of your data.',
+        'sec8.4': 'Object to processing or request its restriction.',
+        'sec8.5': 'Revoke your consent at any time.',
+        'sec8.6': 'File a complaint with the competent data protection authority.',
+        'sec8.text': 'To exercise these rights, send your request to legal@wininterview.xyz clearly stating your request and proving your identity.',
+        'sec9.title': '9. Cookies and similar technologies',
+        'sec9.text': 'Currently wininterview does not use its own tracking cookies. Authentication or payment providers may use technical cookies necessary for their operation. If in the future we implement analytical or marketing cookies, we will update this policy and request your consent where required.',
+        'sec10.title': '10. Changes to this policy',
+        'sec10.text': 'We may update this Privacy Policy to reflect changes in the Service or in regulations. We will publish the updated version with its effective date. We recommend reviewing it periodically.',
+        'sec11.title': '11. Contact',
+        'sec11.text': 'If you have questions about this Privacy Policy or about the processing of your data, write to us at legal@wininterview.xyz.'
+      }
+    };
+
+    let currentLang = localStorage.getItem('ic-lang') || 'es';
+    let currentTheme = localStorage.getItem('ic-theme') || 'dark';
+
+    function t(key) {
+      return (i18n[currentLang] && i18n[currentLang][key]) || key;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('ic-lang', lang);
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (i18n[currentLang][key]) el.innerHTML = i18n[currentLang][key];
+      });
+    }
+
+    function setTheme(theme) {
+      currentTheme = theme;
+      localStorage.setItem('ic-theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+      const btn = document.getElementById('themeToggle');
+      btn.textContent = theme === 'glass' ? '◑' : '◐';
+      btn.title = theme === 'glass' ? 'Switch to dark' : 'Switch to glass';
+    }
+
+    function handleScroll() {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeMenu');
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('menuOverlay');
+
+      function toggle() {
+        const open = menu.classList.toggle('open');
+        overlay.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      menuBtn.addEventListener('click', toggle);
+      closeBtn.addEventListener('click', toggle);
+      overlay.addEventListener('click', toggle);
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggle));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTheme(currentTheme);
+      setLanguage(currentLang);
+      initMobileMenu();
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      });
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        setTheme(currentTheme === 'dark' ? 'glass' : 'dark');
+      });
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    });
+  </script>
+</body>
+</html>

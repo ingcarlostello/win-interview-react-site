@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Glass } from '@/components/ui/Glass';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -8,9 +9,10 @@ import type { Plan } from '@/types/pricing.type';
 interface PricingCardProps {
   plan: Plan;
   className?: string;
+  cta?: ReactNode; // override del botón por defecto (p. ej. en /upgrade)
 }
 
-export function PricingCard({ plan, className }: PricingCardProps) {
+export function PricingCard({ plan, className, cta }: PricingCardProps) {
   const { t } = useLanguage();
   const featured = plan.featured;
 
@@ -54,9 +56,11 @@ export function PricingCard({ plan, className }: PricingCardProps) {
           </li>
         ))}
       </ul>
-      <Button as="a" href={SECTIONS.PRICING} variant={featured ? 'primary' : 'secondary'}>
-        {t('pricing.cta')}
-      </Button>
+      {cta ?? (
+        <Button as="a" href={SECTIONS.PRICING} variant={featured ? 'primary' : 'secondary'}>
+          {t('pricing.cta')}
+        </Button>
+      )}
     </Glass>
   );
 }

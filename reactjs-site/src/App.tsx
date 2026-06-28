@@ -7,6 +7,7 @@ import { TermsPage } from '@/pages/TermsPage';
 import { SignInPage } from '@/pages/SignInPage';
 import { SignUpPage } from '@/pages/SignUpPage';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { UpgradePage } from '@/pages/UpgradePage';
 import { ROUTES } from '@/constants/routes.constants';
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
         <Route path={ROUTES.PRIVACY} element={<PrivacyPage />} />
         <Route path={ROUTES.REFUNDS} element={<RefundsPage />} />
         <Route path={ROUTES.TERMS} element={<TermsPage />} />
+        <Route path={ROUTES.UPGRADE} element={<UpgradePage />} />
       </Route>
       {/* Rutas de auth/dashboard con su propio shell (sin el Layout de marketing) */}
       <Route path={`${ROUTES.SIGN_IN}/*`} element={<SignInPage />} />

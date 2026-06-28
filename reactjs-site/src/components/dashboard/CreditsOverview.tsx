@@ -2,6 +2,7 @@ import { useQuery } from 'convex/react';
 import { ArrowUpRight, AudioLines, Camera, Sparkles } from 'lucide-react';
 import { getQuotaRef } from '@/lib/convexApi';
 import { getPlanLimits, UPGRADEABLE_PLANS } from '@/constants/quota.constants';
+import { ROUTES } from '@/constants/routes.constants';
 import { formatDuration } from '@/helpers/format-duration.helper';
 import { firstOfNextMonth, MONTH_KEYS, parseYearMonth } from '@/helpers/date.helper';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -79,7 +80,7 @@ export function CreditsOverview({ planId }: { planId: string }) {
             </span>
           )}
           {UPGRADEABLE_PLANS.has(planId) && (
-            <Button as="a" href="/#pricing" variant="primary" className="text-sm">
+            <Button as="a" href={ROUTES.UPGRADE} variant="primary" className="text-sm">
               <ArrowUpRight size={15} />
               {t('ic.upgrade')}
             </Button>

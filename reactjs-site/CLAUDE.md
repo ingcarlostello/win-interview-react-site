@@ -47,10 +47,10 @@ A **React 19 + Vite** marketing site with two distinct sections:
 The Convex backend is **not in this repository**—it lives in another project (`interview-copilot`). This frontend calls pre-deployed backend functions via `makeFunctionReference` pattern (see [src/lib/convexApi.ts](src/lib/convexApi.ts)).
 
 The backend provides:
-- `users:storeUser` (mutation) — creates/updates the current user record
-- `users:getCurrentUser` (query) — fetches the current user (email, plan, userKey)
-- `users:regenerateUserKey` (mutation) — generates a new userKey token
-- Other functions: quotas, prompts, Paddle webhooks (not used by this dashboard yet)
+- **Users:** `users:storeUser`, `users:getCurrentUser`, `users:regenerateUserKey`
+- **Paddle Checkout:** `paddle:createCheckout` (action) — initiates checkout, returns transactionId for overlay
+- **Paddle Webhooks:** `POST /api/webhooks/paddle` (httpAction) — processes subscription & transaction events, updates plan
+- Other functions: quotas, prompts, etc.
 
 **Key gotcha:** Do NOT run `npx convex dev` or `convex deploy` from this repo. The backend schema and functions live elsewhere. Running these commands would delete/overwrite the deployed backend because this repo's `convex/` directory is either empty or incomplete.
 
@@ -180,15 +180,42 @@ convex/
 - **Do not run:** `npx convex dev`, `convex deploy`, `convex push`, etc. from this directory.
 - **If you need to add backend functions:** Edit the backend repo, deploy there, then reference them here via `makeFunctionReference`.
 
-### userKey Implementation (Pending Backend)
+### Paddle Integration (Complete)
 
-The [UserKeyCard](src/components/dashboard/UserKeyCard.tsx) component displays a `userKey` field if it exists, with copy/regenerate/logout actions. The backend must add:
-1. `userKey` column to the `users` table
-2. `generateUserKey()` function (crypto-based token with env-specific prefix: `wik_test_*` or `wik_live_*`)
-3. `regenerateUserKey` mutation
-4. Initial userKey generation in `storeUser` / user creation
+**UpgradePage & Checkout:**
+- [UpgradePage.tsx](src/pages/UpgradePage.tsx) — displays pricing cards, handles plan selection & redirect-to-signin flow
+- [usePaddle.ts](src/hooks/usePaddle.ts) — React hook; loads Paddle.js singleton via [paddle.ts](src/lib/paddle.ts)
+- [src/lib/convexApi.ts](src/lib/convexApi.ts) — `createCheckoutRef` calls `paddle:createCheckout(planId)` action
+- Overlay opens with returned `transactionId`, user pays, Paddle redirects to dashboard (webhook already updated plan)
 
-Until the backend implements this, the UI gracefully shows "Your key will be available soon."
+**Webhook Processing & Plan Updates:**
+The backend's `paddleWebhook` httpAction processes:
+- `transaction.completed` — initial purchase, stores paddleCustomerId + paddleSubscriptionId + planId
+- `subscription.*` events (canceled/paused/past_due/etc.) — resolves user via Paddle IDs (indices `by_paddle_subscription`/`by_paddle_customer`), updates planId based on subscription status:
+  - `active` or `trialing` → applies the paid plan
+  - `canceled`, `paused`, `past_due`, etc. → reverts to `free`
+  
+Webhook signature verified via `PADDLE_WEBHOOK_SECRET` (HMAC-SHA256).
+
+**Environment Variables (Convex deployment):**
+- `PADDLE_API_KEY` — sandbox (pdl_sdbx_…) or live (pdl_livesec_…)
+- `PADDLE_API_URL` — `https://sandbox-api.paddle.com` or `https://api.paddle.com`
+- `PADDLE_WEBHOOK_SECRET` — signing secret from Paddle dashboard (must match destination)
+- `PADDLE_PRICE_LITE`, `PADDLE_PRICE_PRO`, `PADDLE_PRICE_ULTRA` — Paddle price IDs (env overrides fallback sandbox IDs)
+
+**Frontend Env Vars (.env.local / .env.production):**
+- `VITE_PADDLE_CLIENT_TOKEN` — sandbox (test_…) or live (live_…)
+- `VITE_PADDLE_ENVIRONMENT` — `'sandbox'` or `'production'`
+
+### userKey Implementation (Complete)
+
+The [UserKeyCard](src/components/dashboard/UserKeyCard.tsx) component displays and manages the user's `userKey` (high-entropy bearer secret for Tauri desktop app login). The backend:
+1. Generates userKey on first sign-up (`storeUser` mutation)
+2. Returns it in `getCurrentUser` query (always populated; backfill for older users)
+3. Provides `regenerateUserKey` mutation to rotate the key
+4. Stores with index `by_user_key` for quick lookup by key itself
+
+The userKey is now fully functional and displayed in the dashboard.
 
 ### Environment Variable Mismatches
 
@@ -199,9 +226,9 @@ Until the backend implements this, the UI gracefully shows "Your key will be ava
 ### Convex Deployment Configuration (Prod Only)
 
 Before deploying the backend to `unique-jaguar-230` (prod), ensure these environment variables are set in the Convex deployment dashboard:
-- `CLERK_ISSUER_URL=https://clerk.wininterview.xyz`
-- `CLERK_SECRET_KEY=sk_live_...` (Clerk prod secret key)
-- `APP_ENV=live` (so userKey uses `wik_live_` prefix)
+- **Clerk:** `CLERK_ISSUER_URL=https://clerk.wininterview.xyz`, `CLERK_SECRET_KEY=sk_live_...`
+- **App:** `APP_ENV=live` (affects userKey prefix)
+- **Paddle:** `PADDLE_API_KEY=pdl_livesec_...`, `PADDLE_API_URL=https://api.paddle.com`, `PADDLE_WEBHOOK_SECRET=<live signing secret>`, and `PADDLE_PRICE_LITE/PRO/ULTRA=pri_...` (live account price IDs)
 
 ---
 
@@ -237,17 +264,31 @@ These skills provide templates for queries, mutations, schema patterns, etc.
 - **Clerk issues:** Check `.env.local` for correct `VITE_CLERK_PUBLISHABLE_KEY`; verify JWT template `convex` exists in Clerk dashboard
 - **Convex connection:** `VITE_CONVEX_URL` should match the deployment; check Convex dashboard for URL
 - **CSS not loading:** Ensure Tailwind is building (check `global.css` or root stylesheet); check terminal for CSS build errors
-- **userKey not showing:** Confirm the backend has added the column and implemented `getCurrentUser` to return it; check Convex Data browser
+- **Paddle checkout errors:**
+  - **403 Forbidden:** API key lacks permission; check Paddle account & `PADDLE_API_KEY` in Convex
+  - **400 transaction_price_not_found:** Price IDs are from wrong Paddle account; verify `PADDLE_PRICE_*` env vars
+  - **Invalid signature / plan not updating:** Webhook secret mismatch; `PADDLE_WEBHOOK_SECRET` must equal Paddle dashboard's signing secret for the destination
+  - **Plan not changing after cancel:** Webhook likely failed to process `subscription.canceled` event; check Convex logs & Paddle → Notifications → Logs
+- **userKey not showing:** Check `getCurrentUser` returns it; regenerate if outdated via dashboard UI
 - **Dev server crashes:** Check for port conflicts (Vite default: 5174); try `pnpm dev --port 3000` if needed
 
 ---
 
 ## Deployment Checklist
 
-- [ ] `.env.local` / `.env.production` have correct keys for target environment
-- [ ] Backend has implemented `userKey` and `regenerateUserKey` (if using those features)
+**Frontend:**
+- [ ] `.env.local` / `.env.production` have correct `VITE_PADDLE_*`, `VITE_CLERK_*`, `VITE_CONVEX_URL` for target
 - [ ] `pnpm typecheck` passes
 - [ ] `pnpm lint` passes
 - [ ] `pnpm build` succeeds (produces `dist/` folder)
-- [ ] Backend deployment (`unique-jaguar-230`) has `CLERK_ISSUER_URL`, `CLERK_SECRET_KEY`, `APP_ENV=live`
-- [ ] Clerk prod instance is configured with the correct redirect URLs
+
+**Backend (Convex):**
+- [ ] Clerk: `CLERK_ISSUER_URL`, `CLERK_SECRET_KEY` set
+- [ ] Paddle: `PADDLE_API_KEY`, `PADDLE_API_URL`, `PADDLE_WEBHOOK_SECRET`, `PADDLE_PRICE_LITE/PRO/ULTRA` all set
+- [ ] `APP_ENV=live` (for prod)
+- [ ] Webhook destination registered in Paddle with correct signing secret
+
+**Integrations:**
+- [ ] Clerk prod instance configured with correct redirect URLs
+- [ ] Paddle webhook destination → `https://unique-jaguar-230.convex.site/api/webhooks/paddle` (for prod)
+- [ ] Test end-to-end: purchase → payment → webhook processes → plan updates in dashboard

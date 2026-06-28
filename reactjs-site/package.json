@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.61.3",
+    "@paddle/paddle-js": "^1.6.4",
     "clsx": "^2.1.1",
     "convex": "^1.42.0",
     "lucide-react": "^1.21.0",

@@ -69,3 +69,12 @@ export const getCurrentUserSubscriptionRef = makeFunctionReference<
   NoArgs,
   SubscriptionInfo | null
 >('users:getCurrentUserSubscription');
+
+// Crea una transacción de Paddle para el plan indicado (lite/pro/ultra) y
+// devuelve su `transactionId` para abrir el overlay de Paddle.js. Requiere
+// sesión: el backend deriva el usuario de la identidad de Clerk.
+export const createCheckoutRef = makeFunctionReference<
+  'action',
+  { planId: string },
+  { transactionId: string }
+>('paddle:createCheckout');

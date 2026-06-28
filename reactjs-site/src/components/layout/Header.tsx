@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { NAV_LINKS } from '@/constants/nav.constants';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useScrolled } from '@/hooks/useScrolled';
@@ -52,6 +53,24 @@ export function Header() {
                 <LangToggle />
               </div>
               <ThemeToggle className="hidden md:flex" />
+              <SignedOut>
+                <Link
+                  to={ROUTES.SIGN_IN}
+                  className="hidden md:inline-flex rounded-xs px-4 py-2 text-[0.9rem] font-medium text-text-secondary transition-all duration-200 ease-out hover:text-text-primary hover:bg-bg-elev-2"
+                >
+                  {t('nav.cta')}
+                </Link>
+              </SignedOut>
+              <SignedIn>
+                <Button
+                  as="a"
+                  href={ROUTES.DASHBOARD}
+                  variant="secondary"
+                  className="hidden md:inline-flex"
+                >
+                  Dashboard
+                </Button>
+              </SignedIn>
               <Button
                 as="a"
                 href={SECTIONS.PRICING}

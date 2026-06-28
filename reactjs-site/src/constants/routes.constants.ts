@@ -5,6 +5,9 @@ export const ROUTES = {
   PRIVACY: '/privacy',
   REFUNDS: '/refunds',
   TERMS: '/terms',
+  SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
+  DASHBOARD: '/dashboard',
 } as const;
 
 export const LEGAL_DOCS: readonly LegalDocId[] = ['privacy', 'refunds', 'terms'] as const;

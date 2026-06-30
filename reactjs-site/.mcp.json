@@ -21,6 +21,10 @@
       "headers": {
         "Authorization": "Bearer ${PADDLE_LIVE_API_KEY}"
       }
+    },
+    "railway": {
+      "type": "http",
+      "url": "https://mcp.railway.com"
     }
   }
 }

@@ -52,15 +52,21 @@ export const getQuotaRef = makeFunctionReference<'query', NoArgs, QuotaData | nu
   'quotas:getQuota',
 );
 
-// Información de suscripción de Paddle. El shape de retorno de
-// `users:getCurrentUserSubscription` NO está declarado en el backend: estos campos
-// reflejan la tabla `users`, pero conviene verificarlos en runtime al integrar.
+// Información de suscripción de Paddle. Nombres alineados con lo que devuelve
+// `users:getCurrentUserSubscription` (campos de la tabla `users`).
 export interface SubscriptionInfo {
   planId: string;
-  status?: string | null; // paddleStatus: "active" | "past_due" | "canceled" | ...
-  currentPeriodEnd?: string | null; // ISO 8601
-  updatePaymentUrl?: string | null;
-  cancelUrl?: string | null;
+  paddleStatus?: string | null; // "active" | "trialing" | "past_due" | "canceled" | ...
+  paddleSubscriptionId?: string | null;
+  paddleCancelUrl?: string | null;
+  paddleUpdatePaymentUrl?: string | null;
+  subscriptionCurrentPeriodEnd?: string | null; // ISO 8601
+  // Cancelación pendiente (scheduled_change nativo de Paddle): action "cancel".
+  scheduledChangeAction?: string | null;
+  scheduledChangeEffectiveAt?: string | null;
+  // Downgrade programado (gestionado por la app).
+  pendingPlanId?: string | null;
+  pendingPlanEffectiveAt?: string | null;
 }
 
 // Suscripción del usuario autenticado (null si no tiene plan de pago).
@@ -69,6 +75,53 @@ export const getCurrentUserSubscriptionRef = makeFunctionReference<
   NoArgs,
   SubscriptionInfo | null
 >('users:getCurrentUserSubscription');
+
+// --- Acciones del portal de facturación (llaman a la API de Paddle) ---
+
+export interface PlanChangeResult {
+  ok: boolean;
+  direction: 'upgrade' | 'downgrade' | 'none';
+  effectiveAt?: string | null;
+}
+
+// Upgrade (inmediato con prorrateo) o downgrade (programado al final del ciclo).
+export const changeSubscriptionPlanRef = makeFunctionReference<
+  'action',
+  { planId: string },
+  PlanChangeResult
+>('paddle:changeSubscriptionPlan');
+
+export interface PreviewResult {
+  immediateAmount: string | null; // menor denominación (centavos), como string
+  currencyCode: string | null;
+  nextBilledAt: string | null;
+}
+
+// Previsualiza el prorrateo de un cambio de plan sin aplicarlo.
+export const previewSubscriptionChangeRef = makeFunctionReference<
+  'action',
+  { planId: string },
+  PreviewResult
+>('paddle:previewSubscriptionChange');
+
+// Cancela al final del ciclo (mantiene acceso hasta effectiveAt).
+export const cancelSubscriptionRef = makeFunctionReference<
+  'action',
+  NoArgs,
+  { ok: boolean; effectiveAt: string | null }
+>('paddle:cancelSubscription');
+
+// Reactiva durante la gracia (quita la cancelación programada).
+export const reactivateSubscriptionRef = makeFunctionReference<'action', NoArgs, { ok: boolean }>(
+  'paddle:reactivateSubscription',
+);
+
+// Devuelve un transactionId para actualizar el método de pago (overlay Paddle.js).
+export const updatePaymentMethodRef = makeFunctionReference<
+  'action',
+  NoArgs,
+  { transactionId: string }
+>('paddle:updatePaymentMethod');
 
 // Crea una transacción de Paddle para el plan indicado (lite/pro/ultra) y
 // devuelve su `transactionId` para abrir el overlay de Paddle.js. Requiere

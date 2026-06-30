@@ -207,6 +207,57 @@ Webhook signature verified via `PADDLE_WEBHOOK_SECRET` (HMAC-SHA256).
 - `VITE_PADDLE_CLIENT_TOKEN` — sandbox (test_…) or live (live_…)
 - `VITE_PADDLE_ENVIRONMENT` — `'sandbox'` or `'production'`
 
+### Billing Portal (Self‑Service, Complete & Deployed)
+
+Users manage subscriptions **within the dashboard** without leaving the site. The portal replaced the read-only `SubscriptionCard`.
+
+**Frontend Components** ([src/components/billing/](src/components/billing/)):
+- `BillingContainer.tsx` — smart container (all logic, data fetching, actions)
+- `CurrentPlanPanel.tsx` — displays plan + status badge + contextual banner ("renews on X", "cancels on Y", "changes to Pro on Z")
+- `PlanChangePanel.tsx` — upgrade/downgrade buttons with `PLAN_RANK` comparison; disabled if already on that plan
+- `CancelReactivatePanel.tsx` — Cancel/Reactivate actions based on subscription state
+- `PaymentMethodPanel.tsx` — "Update payment method" button (opens Paddle overlay)
+- `Modal.tsx` ([src/components/ui/](src/components/ui/)) — new confirmation dialog primitive (portal + Glass + Esc/click-to-close)
+
+**Backend Actions** (in `paddle.ts`, public):
+- `changeSubscriptionPlan({ planId })` — upgrade (immediate + prorated) or downgrade (scheduled, do_not_bill + pending gate)
+- `previewSubscriptionChange({ planId })` — read-only preview of proration amount & next billing date
+- `cancelSubscription()` — cancel with grace period (`effective_from: "next_billing_period"`)
+- `reactivateSubscription()` — resume during grace period (if already canceled/expired, use new checkout instead)
+- `updatePaymentMethod()` — returns `transactionId` for Paddle overlay
+
+**Backend Mutations/Queries** (internal):
+- `setPendingPlanChange` / `clearPendingPlanChange` — manage scheduled downgrades (Paddle `do_not_bill` + app-managed pending state)
+- `applySubscription` (extended) — now accepts `scheduledChange` param; respects pending downgrade grace period (preserves high plan until effective date)
+- `applyDuePendingDowngrades` (internal, daily cron) — backstop to apply pending downgrades at scheduled time if webhook missed
+- `isEventProcessed` / `recordSubscriptionEvent` — webhook idempotency (dedupe by Paddle `event_id`)
+- `getCurrentUserSubscription` (public) — returns subscription metadata including `scheduledChangeAction`, `scheduledChangeEffectiveAt`, `pendingPlanId`, `pendingPlanEffectiveAt`
+
+**Schema Extensions** (`users` table):
+- `subscriptionScheduledChangeAction`, `subscriptionScheduledChangeEffectiveAt` — capture Paddle's native scheduled cancel
+- `pendingPlanId`, `pendingPlanEffectiveAt` — app-managed downgrade scheduling
+- Index `by_pending_effective` — query for due downgrades in cron
+
+**New Table:**
+- `subscriptionEvents` — audit trail + idempotency (dedupe by `paddleEventId`)
+
+**UI States Derived from Schema:**
+- `free` — no paid subscription
+- `active` — subscription active, no pending changes
+- `cancel_pending` — scheduled cancellation (grace period in effect)
+- `downgrade_pending` — scheduled downgrade (access maintained until effective date)
+- `past_due` — payment failed
+- `canceled` — subscription expired
+
+**Paddle Semantics:**
+- Upgrade: `proration_billing_mode: "prorated_immediately"` → charge today, plan changes instantly
+- Downgrade: `proration_billing_mode: "do_not_bill"` + app pending → no charge now, new price at next renewal, high plan preserved until grace ends
+- Cancel: `effective_from: "next_billing_period"` → `scheduled_change` created, `status` stays `active` until effective date
+- Reactivate (grace): `scheduled_change: null` → removes pending cancel, resumes auto-renewal
+- Reactivate (expired): new checkout (Paddle forbids reinstatement of canceled subscriptions)
+
+**i18n:** ~30 new keys under `billing.*` (en.ts + es.ts) covering all states, confirmations, errors, preview text.
+
 ### userKey Implementation (Complete)
 
 The [UserKeyCard](src/components/dashboard/UserKeyCard.tsx) component displays and manages the user's `userKey` (high-entropy bearer secret for Tauri desktop app login). The backend:
@@ -269,6 +320,11 @@ These skills provide templates for queries, mutations, schema patterns, etc.
   - **400 transaction_price_not_found:** Price IDs are from wrong Paddle account; verify `PADDLE_PRICE_*` env vars
   - **Invalid signature / plan not updating:** Webhook secret mismatch; `PADDLE_WEBHOOK_SECRET` must equal Paddle dashboard's signing secret for the destination
   - **Plan not changing after cancel:** Webhook likely failed to process `subscription.canceled` event; check Convex logs & Paddle → Notifications → Logs
+- **Billing portal issues:**
+  - **Preview not showing:** `previewSubscriptionChange` failed (check Convex logs for Paddle API errors)
+  - **Downgrade scheduled but plan not changing on renewal:** Check `pendingPlanId` and `pendingPlanEffectiveAt` in Convex Data browser; cron `apply-due-downgrades` should have run at 06:00 UTC; or webhook `subscription.updated` on renewal gate bypassed it correctly (expected behavior—high plan preserved during grace)
+  - **Cancel not showing grace period:** Confirm webhook parsed `scheduled_change` and stored `subscriptionScheduledChangeEffectiveAt`; check `subscriptionEvents` table for `subscription.updated` event idempotency
+  - **Reactivate button not appearing:** Derived state machine may not recognize `cancel_pending`; verify `subscriptionScheduledChangeAction === "cancel"` in data
 - **userKey not showing:** Check `getCurrentUser` returns it; regenerate if outdated via dashboard UI
 - **Dev server crashes:** Check for port conflicts (Vite default: 5174); try `pnpm dev --port 3000` if needed
 
@@ -278,17 +334,26 @@ These skills provide templates for queries, mutations, schema patterns, etc.
 
 **Frontend:**
 - [ ] `.env.local` / `.env.production` have correct `VITE_PADDLE_*`, `VITE_CLERK_*`, `VITE_CONVEX_URL` for target
-- [ ] `pnpm typecheck` passes
-- [ ] `pnpm lint` passes
-- [ ] `pnpm build` succeeds (produces `dist/` folder)
+- [ ] `node_modules/.bin/tsc -p tsconfig.json --noEmit` passes (pnpm typecheck buggy; use direct binary)
+- [ ] `node_modules/.bin/eslint .` passes (pnpm lint buggy; use direct binary)
+- [ ] `node_modules/.bin/vite build` succeeds (produces `dist/` folder)
 
 **Backend (Convex):**
 - [ ] Clerk: `CLERK_ISSUER_URL`, `CLERK_SECRET_KEY` set
 - [ ] Paddle: `PADDLE_API_KEY`, `PADDLE_API_URL`, `PADDLE_WEBHOOK_SECRET`, `PADDLE_PRICE_LITE/PRO/ULTRA` all set
 - [ ] `APP_ENV=live` (for prod)
 - [ ] Webhook destination registered in Paddle with correct signing secret
+- [ ] Schema migrated: `subscriptionEvents` table + `users` fields (pending/scheduled change) created (auto on `npx convex deploy`)
+- [ ] Cron registered: `apply-due-downgrades` runs daily at 06:00 UTC (verify in Convex dashboard → Crons)
+
+**Billing Portal Specifics:**
+- [ ] Test upgrade: preview shown, proration charged, plan updates immediately
+- [ ] Test downgrade: scheduled with pending gate, high plan preserved, banner shows effective date, Undo works
+- [ ] Test cancel: grace period active, access maintained, reactivate removes scheduled_change
+- [ ] Test reactivate (expired): redirects to new checkout, tenant data preserved
+- [ ] Webhook idempotency: resend same `event_id` from Paddle, confirm no re-processing (Convex logs show deduped response)
 
 **Integrations:**
 - [ ] Clerk prod instance configured with correct redirect URLs
 - [ ] Paddle webhook destination → `https://unique-jaguar-230.convex.site/api/webhooks/paddle` (for prod)
-- [ ] Test end-to-end: purchase → payment → webhook processes → plan updates in dashboard
+- [ ] Test end-to-end: purchase → payment → webhook processes → plan updates in billing portal + dashboard

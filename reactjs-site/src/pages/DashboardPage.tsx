@@ -7,7 +7,7 @@ import { EnsureConvexUser } from '@/components/dashboard/EnsureConvexUser';
 import { AccountHeader } from '@/components/dashboard/AccountHeader';
 import { UserKeyCard } from '@/components/dashboard/UserKeyCard';
 import { CreditsOverview } from '@/components/dashboard/CreditsOverview';
-import { SubscriptionCard } from '@/components/dashboard/SubscriptionCard';
+import { BillingContainer } from '@/components/billing/BillingContainer';
 
 function Spinner({ label }: { label: string }) {
   return (
@@ -36,7 +36,7 @@ function DashboardContent() {
           <div className="mt-6">
             <UserKeyCard user={user} />
           </div>
-          <SubscriptionCard planId={user.planId} />
+          <BillingContainer planId={user.planId} />
         </>
       )}
     </div>

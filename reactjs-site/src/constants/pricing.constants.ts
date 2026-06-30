@@ -1,5 +1,5 @@
 import type { TrustItem } from '@/types/content.type';
-import type { Plan } from '@/types/pricing.type';
+import type { Plan, PlanId } from '@/types/pricing.type';
 
 export const HERO_TRUST_ITEMS: readonly TrustItem[] = [
   { textKey: 'hero.trust1' },
@@ -89,6 +89,15 @@ export const PLANS: readonly Plan[] = [
     ],
   },
 ] as const;
+
+// Orden de los planes (espejo de convex/constants.ts PLAN_RANK). Decide si un
+// cambio es upgrade (sube de rango) o downgrade (baja de rango).
+export const PLAN_RANK: Record<PlanId, number> = {
+  free: 0,
+  lite: 1,
+  pro: 2,
+  ultra: 3,
+};
 
 export const FAQ_COUNT = 7;
 export const FAQ_INDEXES: readonly number[] = Array.from({ length: FAQ_COUNT }, (_, i) => i);

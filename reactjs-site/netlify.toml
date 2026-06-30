@@ -1,0 +1,16 @@
+# Netlify build & deploy config — reactjs-site dashboard (production at wininterview.xyz)
+[build]
+  # Direct Vite binary: known-working invocation that sidesteps the pnpm-run wrapper.
+  # tsc typecheck stays a separate `pnpm typecheck` / CI concern.
+  command = "node_modules/.bin/vite build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22.13.1"
+  PNPM_VERSION = "11.9.0"
+
+# SPA fallback so React Router handles client-side routes (no 404 on deep links / refresh).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

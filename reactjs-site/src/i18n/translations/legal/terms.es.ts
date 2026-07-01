@@ -11,7 +11,7 @@ export const termsEs: TranslationDict = {
   'footer.copy': '© 2026 wininterview. Todos los derechos reservados.',
   'page.label': 'Legal',
   'page.title': 'Términos de servicio',
-  'page.updated': 'Última actualización: 25 de junio de 2026',
+  'page.updated': 'Última actualización: 1 de julio de 2026',
   'intro.0':
     'Importante: este documento es un modelo genérico de términos de servicio adaptado a wininterview. No constituye asesoría legal. Te recomendamos revisarlo con un abogado antes de publicarlo.',
   'sec1.title': '1. Identificación del titular',
@@ -22,7 +22,7 @@ export const termsEs: TranslationDict = {
     'Al acceder, registrarte o utilizar wininterview, aceptas quedar vinculado por estos Términos de servicio. Si no estás de acuerdo, no debes usar el Servicio. El uso continuado después de cualquier modificación implica la aceptación de los términos actualizados.',
   'sec3.title': '3. Descripción del servicio',
   'sec3.text':
-    'wininterview es un copiloto de inteligencia artificial para entrevistas por video. El Servicio incluye, entre otras funciones, transcripción en tiempo real del audio del entrevistador, generación de respuestas sugeridas y análisis de capturas de pantalla proporcionadas voluntariamente por el usuario. El Servicio se proporciona "tal cual" y está destinado a ser una herramienta de apoyo, no un sustituto del juicio profesional del candidato.',
+    'wininterview es una plataforma de preparación y entrenamiento para entrevistas técnicas. El Servicio incluye, entre otras funciones, sesiones de práctica y simulacros, feedback estructurado, ejercicios de código y system design, y analítica de rendimiento. El Servicio se proporciona "tal cual" y está destinado a ser una herramienta de preparación y entrenamiento, no un sustituto del juicio profesional del candidato.',
   'sec4.title': '4. Requisitos de edad y elegibilidad',
   'sec4.text':
     'Para usar wininterview debes tener al menos 18 años o la mayoría de edad legal en tu jurisdicción. Al registrarte, declaras que cumples con este requisito y que la información proporcionada es veraz y completa.',
@@ -50,7 +50,7 @@ export const termsEs: TranslationDict = {
     'Tú conservas los derechos sobre cualquier contenido que introduzcas en el Servicio (como prompts personalizados). Al usar el Servicio, nos otorgas una licencia limitada para procesar dicho contenido exclusivamente con el fin de prestarte el Servicio. No vendemos ni comercializamos tu contenido.',
   'sec10.title': '10. Limitación de responsabilidad',
   'sec10.text':
-    'En la máxima medida permitida por la ley aplicable, Carlos Tello - win interview no será responsable por daños indirectos, incidentales, especiales, consecuentes o punitivos, ni por pérdida de beneficios, datos o reputación derivada del uso o la imposibilidad de uso del Servicio. Las respuestas generadas por IA son sugerencias automáticas y no garantizan el éxito en ninguna entrevista o proceso de selección.',
+    'En la máxima medida permitida por la ley aplicable, Carlos Tello - win interview no será responsable por daños indirectos, incidentales, especiales, consecuentes o punitivos, ni por pérdida de beneficios, datos o reputación derivada del uso o la imposibilidad de uso del Servicio. El feedback y las sugerencias de práctica son orientativos y no garantizan el éxito en ningún proceso de entrevista o selección.',
   'sec11.title': '11. Indemnización',
   'sec11.text':
     'Aceptas indemnizar y mantener indemne a Carlos Tello - win interview frente a reclamaciones, daños, responsabilidades y gastos derivados de tu uso del Servicio, de tu violación de estos términos o de la infracción de derechos de terceros.',

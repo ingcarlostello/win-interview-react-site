@@ -11,7 +11,7 @@ export const privacyEn: TranslationDict = {
   'footer.copy': '© 2026 wininterview. All rights reserved.',
   'page.label': 'Legal',
   'page.title': 'Privacy policy',
-  'page.updated': 'Last updated: June 25, 2026',
+  'page.updated': 'Last updated: July 1, 2026',
   'intro.0':
     'Important: this document is a generic privacy policy template adapted for wininterview. It does not constitute legal advice. We recommend having it reviewed by an attorney before publishing.',
   'sec1.title': '1. Data controller',
@@ -24,14 +24,14 @@ export const privacyEn: TranslationDict = {
   'sec2.2':
     'Usage data: information about how you interact with the app, including your subscribed plan, quotas consumed, and language or theme preferences.',
   'sec2.3':
-    'Real-time audio: audio captured by your microphone is transmitted encrypted to our transcription providers (Deepgram) to generate the transcript. We do not store audio recordings.',
+    'Practice audio: audio captured by your microphone during practice sessions is transmitted encrypted to our processing providers to produce the session transcript. We do not store audio recordings.',
   'sec2.4':
-    'Screenshots: when you enable screen analysis, the image is sent encrypted to our computer vision provider (MiniMax). We do not keep screenshots after analysis.',
+    'Screenshots: when you enable exercise analysis, the image is sent encrypted to our processing provider. We do not keep screenshots after analysis.',
   'sec2.5':
-    'Custom prompts: instructions you configure to customize AI responses are stored in your account for future use.',
+    'Custom prompts: instructions you configure to customize your practice sessions are stored in your account for future use.',
   'sec3.title': '3. Purpose of processing',
   'sec3.text':
-    'We process your data solely to: (a) provide the AI copilot Service; (b) manage your account, subscription, and payments; (c) improve the quality and security of the Service; and (d) comply with legal obligations. We do not use your interviews or their content to train our own or third-party AI models.',
+    'We process your data solely to: (a) provide the interview preparation Service; (b) manage your account, subscription, and payments; (c) improve the quality and security of the Service; and (d) comply with legal obligations. We do not use your practice data or its content to train our own or third-party AI models.',
   'sec4.title': '4. Legal basis',
   'sec4.text':
     'The legal basis for processing your data is the performance of the Service contract (terms accepted upon registration) and, where applicable, your express consent for audio and screen processing, which you can revoke at any time by closing the app or disabling the corresponding permissions.',
@@ -41,9 +41,9 @@ export const privacyEn: TranslationDict = {
   'sec5.1': 'Clerk: authentication and account management.',
   'sec5.2': 'Convex: storage of user data, quotas, and prompts.',
   'sec5.3': 'Paddle: payment and subscription processing.',
-  'sec5.4': 'Deepgram: real-time audio transcription.',
-  'sec5.5': 'MiniMax: screenshot analysis.',
-  'sec5.6': 'DeepSeek / NVIDIA: AI answer generation.',
+  'sec5.4': 'Practice audio processing to produce session transcripts.',
+  'sec5.5': 'Exercise and screenshot analysis for practice feedback.',
+  'sec5.6': 'Generation of structured practice feedback.',
   'sec5.text_2':
     'These providers act as data processors and only access the data necessary to provide their service. We ensure that transfers are made with appropriate contractual and technical safeguards.',
   'sec6.title': '6. Security',
@@ -51,7 +51,7 @@ export const privacyEn: TranslationDict = {
     'We apply technical and organizational measures to protect your data, including encrypted connections (TLS), JWT token authentication, per-user isolation, and restricted access to infrastructure. Despite our efforts, no system is completely invulnerable; we recommend keeping your password and devices secure.',
   'sec7.title': '7. Data retention',
   'sec7.text':
-    'We keep your personal data while you maintain an active account. Audio and screenshots are processed in real time and are not permanently stored. Billing data is retained for the period required by applicable tax and commercial law. If you cancel your account, we will delete your personal data within a reasonable time, except where legal retention obligations apply.',
+    'We keep your personal data while you maintain an active account. Audio and screenshots are processed transiently during the session and are not permanently stored. Billing data is retained for the period required by applicable tax and commercial law. If you cancel your account, we will delete your personal data within a reasonable time, except where legal retention obligations apply.',
   'sec8.title': '8. Your rights',
   'sec8.intro': 'As a data subject you have the right to:',
   'sec8.1': 'Access your personal data.',

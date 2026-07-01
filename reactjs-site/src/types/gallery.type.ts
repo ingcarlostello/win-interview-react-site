@@ -1,11 +1,4 @@
-export type MockupVariant =
-  | 'idle'
-  | 'transcribing'
-  | 'responding'
-  | 'screen-analysis'
-  | 'glass-theme'
-  | 'ghost-mode'
-  | 'quota-exceeded';
+export type MockupVariant = 'dashboard' | 'practice' | 'report' | 'question-bank';
 
 export interface GallerySlide {
   variant: MockupVariant;

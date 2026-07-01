@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FOOTER_LINKS } from '@/constants/nav.constants';
 import { ROUTES } from '@/constants/routes.constants';
+import { SUPPORT_EMAIL } from '@/constants/contact.constants';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Container } from '@/components/ui/Container';
 
@@ -30,7 +31,15 @@ export function Footer() {
             ))}
           </div>
 
-          <p className="text-[0.85rem] text-text-muted">{t('footer.copy')}</p>
+          <div className="flex flex-col items-end gap-1">
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="text-[0.85rem] text-text-secondary transition-colors duration-200 hover:text-accent"
+            >
+              {SUPPORT_EMAIL}
+            </a>
+            <p className="text-[0.85rem] text-text-muted">{t('footer.copy')}</p>
+          </div>
         </div>
       </Container>
     </footer>

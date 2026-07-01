@@ -1,17 +1,17 @@
 import type { PlatformItem, MetricItem, TestimonialItem } from '@/types/content.type';
 
 export const PLATFORMS: readonly PlatformItem[] = [
-  { icon: '🎥', label: 'Zoom' },
-  { icon: '📺', label: 'Google Meet' },
-  { icon: '💬', label: 'Microsoft Teams' },
-  { icon: '🖥️', label: 'CoderPad' },
-  { icon: '⌨️', label: 'LeetCode' },
+  { icon: '💻', label: 'Coding' },
+  { icon: '🧩', label: 'Algorithms' },
+  { icon: '🏛️', label: 'System Design' },
+  { icon: '🗄️', label: 'SQL' },
+  { icon: '🗣️', label: 'Behavioral' },
 ] as const;
 
 export const METRICS: readonly MetricItem[] = [
   { value: '12K+', labelKey: 'social.metric1' },
   { value: '850K+', labelKey: 'social.metric2' },
-  { value: '<2s', labelKey: 'social.metric3' },
+  { value: '+37%', labelKey: 'social.metric3' },
 ] as const;
 
 export const TESTIMONIALS: readonly TestimonialItem[] = [

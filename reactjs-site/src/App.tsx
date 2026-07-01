@@ -4,6 +4,7 @@ import { HomePage } from '@/pages/HomePage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { RefundsPage } from '@/pages/RefundsPage';
 import { TermsPage } from '@/pages/TermsPage';
+import { ContactPage } from '@/pages/ContactPage';
 import { SignInPage } from '@/pages/SignInPage';
 import { SignUpPage } from '@/pages/SignUpPage';
 import { DashboardPage } from '@/pages/DashboardPage';
@@ -18,6 +19,7 @@ export function App() {
         <Route path={ROUTES.PRIVACY} element={<PrivacyPage />} />
         <Route path={ROUTES.REFUNDS} element={<RefundsPage />} />
         <Route path={ROUTES.TERMS} element={<TermsPage />} />
+        <Route path={ROUTES.CONTACT} element={<ContactPage />} />
         <Route path={ROUTES.UPGRADE} element={<UpgradePage />} />
       </Route>
       {/* Rutas de auth/dashboard con su propio shell (sin el Layout de marketing) */}

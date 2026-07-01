@@ -1,8 +1,23 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { Glass } from '@/components/ui/Glass';
 
+interface Skill {
+  key: string;
+  score: number;
+}
+
+const SKILLS: readonly Skill[] = [
+  { key: 'hero.rd.skill.system', score: 82 },
+  { key: 'hero.rd.skill.algorithms', score: 71 },
+  { key: 'hero.rd.skill.behavioral', score: 90 },
+  { key: 'hero.rd.skill.coding', score: 64 },
+];
+
+const TREND = [30, 45, 40, 62, 78, 70, 88];
+
 export function HeroMockup() {
   const { t } = useLanguage();
+  const readiness = 78;
 
   return (
     <div className="relative">
@@ -12,26 +27,67 @@ export function HeroMockup() {
           <span className="h-3 w-3 rounded-full bg-[#fbbf24]" />
           <span className="h-3 w-3 rounded-full bg-[#22c55e]" />
         </div>
-        <div className="p-5">
-          <div className="mb-4 flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_12px_var(--color-accent)] animate-dot-pulse" />
-            <span className="font-mono text-[0.7rem] font-semibold tracking-[0.1em] text-accent">
-              {t('hero.tag_listening')}
+
+        <div className="grid grid-cols-[auto_1fr] gap-5 p-5">
+          {/* Readiness dial */}
+          <div className="flex flex-col items-center justify-center gap-2">
+            <div
+              className="relative flex h-24 w-24 items-center justify-center rounded-full"
+              style={{
+                background: `conic-gradient(var(--color-accent) ${readiness * 3.6}deg, var(--color-bg-inset) 0deg)`,
+              }}
+            >
+              <div className="flex h-[76px] w-[76px] flex-col items-center justify-center rounded-full bg-bg-base">
+                <span className="font-mono text-xl font-bold text-accent">{readiness}%</span>
+                <span className="text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-text-muted">
+                  {t('hero.rd.title')}
+                </span>
+              </div>
+            </div>
+            <span className="max-w-[8rem] text-center text-[0.7rem] leading-tight text-text-secondary">
+              {t('hero.rd.ready')}
             </span>
           </div>
-          <div className="mb-3.5 rounded-xs border border-border bg-bg-inset px-3.5 py-3 text-[0.8rem] text-text-secondary">
-            <div className="mb-1.5 font-mono text-[0.65rem] tracking-[0.1em] text-text-muted">
-              {t('hero.tag_interviewer')}
-            </div>
-            <span>{t('hero.mock_question')}</span>
+
+          {/* Skills */}
+          <div className="flex flex-col justify-center gap-2.5">
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-text-muted">
+              {t('hero.rd.skills')}
+            </span>
+            {SKILLS.map((s) => (
+              <div key={s.key} className="flex items-center gap-2.5">
+                <span className="w-[5.5rem] flex-shrink-0 text-[0.68rem] text-text-secondary">
+                  {t(s.key)}
+                </span>
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-bg-inset">
+                  <div
+                    className="h-full rounded-full bg-accent shadow-[0_0_8px_var(--color-accent-glow)]"
+                    style={{ width: `${s.score}%` }}
+                  />
+                </div>
+                <span className="w-6 flex-shrink-0 text-right font-mono text-[0.65rem] text-text-muted">
+                  {s.score}
+                </span>
+              </div>
+            ))}
           </div>
-          <div className="rounded-xs border border-accent-border bg-accent-soft-2 px-3.5 py-3.5 font-mono text-[0.78rem] leading-relaxed text-text-primary">
-            <div className="mb-2 font-mono text-[0.65rem] font-semibold tracking-[0.1em] text-accent">
-              {t('hero.tag_copilot')}
-            </div>
-            <span>{t('hero.mock_response')}</span>
-            <span className="ml-0.5 inline-block w-2 bg-accent animate-blink">▎</span>
+        </div>
+
+        {/* Practice trend */}
+        <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-3.5">
+          <span className="text-[0.68rem] text-text-secondary">{t('hero.rd.trend')}</span>
+          <div className="flex flex-1 items-end justify-center gap-1">
+            {TREND.map((h, i) => (
+              <span
+                key={i}
+                className="w-2 rounded-sm bg-accent-soft-2"
+                style={{ height: `${Math.max(6, (h / 100) * 22)}px` }}
+              />
+            ))}
           </div>
+          <span className="font-mono text-[0.68rem] font-semibold text-accent">
+            {t('hero.rd.trendDelta')}
+          </span>
         </div>
       </Glass>
     </div>

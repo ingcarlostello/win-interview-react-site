@@ -22,4 +22,5 @@ export const FOOTER_LINKS: readonly FooterLink[] = [
   { href: '/terms', labelKey: 'footer.terms' },
   { href: '/privacy', labelKey: 'footer.privacy' },
   { href: '/refunds', labelKey: 'footer.refunds' },
+  { href: '/contact', labelKey: 'footer.contact' },
 ] as const;
